@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using CatalogApp;
 using CatalogApp.Models;
 using Microsoft.FluentUI.AspNetCore.Components;
-
+//
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 builder.RootComponents.RegisterCustomElement<App>("my-app");
