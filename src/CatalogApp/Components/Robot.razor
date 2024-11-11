@@ -1,0 +1,52 @@
+@page "/catalog/{robotName}"
+
+@using CatalogApp.Models
+@using Microsoft.FluentUI.AspNetCore.Components
+
+@inject RobotCatalog RobotCatalog
+@inject NavigationManager Navigation
+
+
+<img src="@_robot.ImageUrl" />
+
+<FluentStack Orientation="@Orientation.Vertical">
+    <FluentStack Orientation="@Orientation.Horizontal">
+        <span class="robot-label">Name</span>
+        <span>@_robot.Name</span>
+    </FluentStack>
+    <FluentStack Orientation="@Orientation.Horizontal">
+        <span class="robot-label">Price</span>
+        <span>@_robot.Price</span>
+    </FluentStack>
+    <FluentStack Orientation="@Orientation.Horizontal">
+        <span class="robot-label">Quality</span>
+        <span>@_robot.Quality</span>
+    </FluentStack>
+    <FluentStack Orientation="@Orientation.Horizontal">
+        <span class="robot-label">Description</span>
+        <span>@_robot.Description</span>
+    </FluentStack>
+</FluentStack>
+<p>
+    <FluentButton @onclick="() => Back()">
+        Back to catalog
+    </FluentButton>
+</p>
+
+@code {
+    [Parameter]
+    public string RobotName { get; set; } = "";
+
+    private Models.Robot _robot = Models.Robot.Default;
+
+    protected override void OnInitialized()
+    {
+        _robot = RobotCatalog.Get(RobotName);
+    }
+
+    public void Back()
+    {
+        Navigation.NavigateTo("/catalog");
+    }
+
+}
