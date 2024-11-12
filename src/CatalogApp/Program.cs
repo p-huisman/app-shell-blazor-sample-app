@@ -31,7 +31,9 @@ builder.Services.AddScoped(
 builder.Services.AddCors(policy =>
    {
        policy.AddPolicy("CorsPolicy", opt => opt
-           .AllowAnyOrigin()
+           .AllowCredentials()
+           .SetIsOriginAllowed(origin => new Uri(origin).Scheme == "http" || new Uri(origin).Scheme == "https")
+        //    .AllowAnyOrigin()
            .AllowAnyHeader()
            .AllowAnyMethod());
    });
