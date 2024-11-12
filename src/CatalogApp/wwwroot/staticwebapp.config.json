@@ -1,6 +1,6 @@
 {
     "globalHeaders": {
-        "Access-Control-Allow-Origin": "http://localhost:9090",
+        "Access-Control-Allow-Origin": "https://p-huisman.github.io",
         "Access-Control-Allow-Credentials": "true"
     }
 }
