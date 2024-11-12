@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "CatalogApp",
   "resources": {
-    "hash": "sha256-I/OkMPjcbTSuRwixbaH4jLWxrSAx+ToUT41Pdyb8Ki8=",
+    "hash": "sha256-UvWw7he1O1RsdwKrPv0oO5uhpGHL/B8KkT0e6Mvfrac=",
     "jsModuleNative": {
       "dotnet.native.8.0.10.wt5km2yclk.js": "sha256-bbICgjMo8SzYb5Hspg98dGN4T/Z0QENEbumIyLcnB2M="
     },
@@ -17,7 +17,7 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "CatalogApp.wasm": "sha256-AvWHH5WX7/frC2ihNnZBeaNRBtkITjLfSisPtrp2M/Y=",
+      "CatalogApp.wasm": "sha256-mU80u127nl9VnjcTMeUH+KS044fnH/nAFnodb1Rm2rM=",
       "Microsoft.AspNetCore.Components.CustomElements.wasm": "sha256-uxYdu/x5vilktNWqq3A+RI1hwf9SuwLIMqoecpHGzOQ=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-LfCXWxoKambzo+oD3oWZJ5J7W9qHmw/p9iUxdlMHU1U=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-Q2col2Wf8z5nRaX3Y3iMkj86XulfjM4Oz5J+jfoP7cM=",
