@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "CatalogApp",
   "resources": {
-    "hash": "sha256-NIcyWyAF/Pjm+Q4QGruCG6mcXNh5e8+PEMhLVGK+3/A=",
+    "hash": "sha256-r9+qN9dW+lrmzJmpSumWW5D/ReZ2ZYHYCk/O9RHIXuw=",
     "jsModuleNative": {
       "dotnet.native.8.0.10.wt5km2yclk.js": "sha256-bbICgjMo8SzYb5Hspg98dGN4T/Z0QENEbumIyLcnB2M="
     },
@@ -17,7 +17,7 @@
       "icudt_no_CJK.dat": "sha256-L7sV7NEYP37/Qr2FPCePo5cJqRgTXRwGHuwF5Q+0Nfs="
     },
     "assembly": {
-      "CatalogApp.wasm": "sha256-DP8NHWfi3qcJ2kUjs1+j30F1QnoIwCvqn1K0nSUSE/M=",
+      "CatalogApp.wasm": "sha256-/vkR4SKGAtJnBmTTZEImKUZ8bWO2ULjCgp6RSAUTBcQ=",
       "Microsoft.AspNetCore.Components.CustomElements.wasm": "sha256-uxYdu/x5vilktNWqq3A+RI1hwf9SuwLIMqoecpHGzOQ=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-LfCXWxoKambzo+oD3oWZJ5J7W9qHmw/p9iUxdlMHU1U=",
       "Microsoft.AspNetCore.Components.wasm": "sha256-Q2col2Wf8z5nRaX3Y3iMkj86XulfjM4Oz5J+jfoP7cM=",
@@ -57,7 +57,7 @@
       "System.Linq.Expressions.wasm": "sha256-or5EXCRIGb1L5C4QxYnGq+TbVT1hf/AHR12eO6n1HaY=",
       "System.Linq.wasm": "sha256-MQ7nmw+ZRNFpniDC+cQOBTNe18t8G7aZ/m3T1vZ+qB0=",
       "System.Memory.wasm": "sha256-99w3WH+y9WgCvCeQV3l8zs3wQtCg6E+gUsZjw4K7QSM=",
-      "System.Net.Http.wasm": "sha256-Ggf7WtLzhjz7lICxoSDPQMZNlIAI71ehy65M0obi2OI=",
+      "System.Net.Http.wasm": "sha256-UCHdL+XnhQo0ga/XqQH/SylPOjXNfhp0ET4yy72Drn4=",
       "System.Net.Primitives.wasm": "sha256-zkBnHY7wBGybPtWrSkatqvoHnsdnoBD9RbvAIgEgbf4=",
       "System.Net.WebSockets.wasm": "sha256-4FRr6zN/kCtjEkC349eNtdJZ6A0KlNjLBBnJj2SYgW0=",
       "System.ObjectModel.wasm": "sha256-1yzE8oPpRQ1yYznTlaHEO8RiR9uMimz/ddb1xFfHXNw=",
@@ -86,6 +86,9 @@
   "cacheBootResources": true,
   "debugLevel": 0,
   "linkerEnabled": true,
+  "appsettings": [
+    "../appsettings.json"
+  ],
   "globalizationMode": "sharded",
   "extensions": {
     "blazor": {}
