@@ -7,6 +7,8 @@
 @inject NavigationManager Navigation
 @inject RobotCatalog RobotCatalog
 
+
+
 <h1>Available Robots</h1>
 
 
@@ -44,37 +46,6 @@
         <div class="demo-panel demo-panel-2">
             <FluentStack Wrap="true">
                 @foreach (var robot in RobotCatalog.GetRobots())
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 {
                     <a href="/catalog/@(robot.Name.ToLower())" @onclick:preventDefault @onclick="() => Do(robot.Name)">
                         <FluentCard Width="320px">
@@ -98,7 +69,9 @@
 
     public void Do(String r)
     {
-        Navigation.NavigateTo($"/catalog/{r.ToLower()}");
+
+        Navigation.NavigateTo($"{Navigation.BaseUri}catalog/{r.ToLower()}");
+
     }
 
     private class FluentCustomAppBarItem : FluentAppBarItem
