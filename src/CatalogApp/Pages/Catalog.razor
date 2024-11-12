@@ -7,28 +7,31 @@
 @inject NavigationManager Navigation
 @inject RobotCatalog RobotCatalog
 
-
-
 <h1>Available Robots</h1>
-
 
 <FluentSplitter Orientation="@Orientation.Horizontal" BarSize="6" Panel1MinSize="15%" Panel2MinSize="50px">
     <Panel1>
         <div class="demo-panel demo-panel-1">
 
             <div>
-                <FluentAppBar Orientation="@Orientation.Horizontal" Items="@_apps.OrderBy(a => a.Order)"
-                              PopoverShowSearch="false">
-                </FluentAppBar>
+                <FluentDataGrid Items="@people">
+                    <PropertyColumn Property="@(p => p.PersonId)" Sortable="true" />
+                    <PropertyColumn Property="@(p => p.Name)" Sortable="true" />
+                    <PropertyColumn Property="@(p => p.BirthDate)" Format="yyyy-MM-dd" Sortable="true" />
+                </FluentDataGrid>
+
             </div>
             <p>
-                <FluentButton id="myPopoverButtonl" Appearance="Appearance.Accent" @onclick="() => _visibleL = !_visibleL">
+                <FluentButton id="myPopoverButtonl" Appearance="Appearance.Accent"
+                    @onclick="() => _visibleL = !_visibleL">
                     Open Callout 1
                 </FluentButton>
 
             </p>
-            <FluentPopover Style="width: 300px;" VerticalThreshold="170" AnchorId="myPopoverButtonl" @bind-Open="_visibleL">
+            <FluentPopover Style="width: 300px;" VerticalThreshold="170" AnchorId="myPopoverButtonl"
+                @bind-Open="_visibleL">
                 <Header>Callout Header</Header>
+
                 <Body>
                     <FluentStack Orientation="Orientation.Vertical">
                         <FluentCheckbox>Item 1</FluentCheckbox>
@@ -38,8 +41,6 @@
                 </Body>
                 <Footer>Callout Footer</Footer>
             </FluentPopover>
-            .
-
         </div>
     </Panel1>
     <Panel2>
@@ -47,7 +48,7 @@
             <FluentStack Wrap="true">
                 @foreach (var robot in RobotCatalog.GetRobots())
                 {
-                    <a href="/catalog/@(robot.Name.ToLower())" @onclick:preventDefault @onclick="() => Do(robot.Name)">
+                    <a href="/catalog/@(robot.Name.ToLower())" @onclick:preventDefault @onclick="() => NavigateTo(robot.Name)">
                         <FluentCard Width="320px">
                             <img class="card-img" src="@(robot.ImageUrl)">
                             <span>@robot.Name</span>
@@ -60,54 +61,24 @@
     </Panel2>
 </FluentSplitter>
 
-
-
-
 @code {
-
     bool _visibleL = false;
 
-    public void Do(String r)
-    {
+    record Person(int PersonId, string Name, DateOnly BirthDate);
 
+    IQueryable<Person> people = new[]
+    {
+new Person(10895, "Jean Martin", new DateOnly(1985, 3, 16)),
+new Person(10944, "António Langa", new DateOnly(1991, 12, 1)),
+new Person(11203, "Julie Smith", new DateOnly(1958, 10, 10)),
+new Person(11205, "Nur Sari", new DateOnly(1922, 4, 27)),
+new Person(11898, "Jose Hernandez", new DateOnly(2011, 5, 3)),
+new Person(12130, "Kenji Sato", new DateOnly(2004, 1, 9)),
+}.AsQueryable();
+
+    public void NavigateTo(String r)
+    {
         Navigation.NavigateTo($"{Navigation.BaseUri}catalog/{r.ToLower()}");
-
     }
-
-    private class FluentCustomAppBarItem : FluentAppBarItem
-    {
-        public int Order { get; set; }
-    }
-
-    private List<FluentCustomAppBarItem> _apps => new List<FluentCustomAppBarItem>
-    {
-        new FluentCustomAppBarItem { Order = 15, IconRest = ResourcesIcon(), IconActive = ResourcesIcon(active: true), Text = "A-App", },
-        new FluentCustomAppBarItem { Order = 14, IconRest = ResourcesIcon(), IconActive = ResourcesIcon(active: true), Text = "B-App",  },
-        new FluentCustomAppBarItem { Order = 13, IconRest = ResourcesIcon(), IconActive = ResourcesIcon(active: true), Text = "C-App" },
-        new FluentCustomAppBarItem { Order = 12, IconRest = ConsoleLogsIcon(), IconActive = ConsoleLogsIcon(active: true), Text = "D-App" },
-        new FluentCustomAppBarItem { Order = 11, IconRest = ConsoleLogsIcon(), IconActive = ConsoleLogsIcon(active: true), Text = "E-App" },
-        new FluentCustomAppBarItem { Order = 10, IconRest = ConsoleLogsIcon(), IconActive = ConsoleLogsIcon(active: true), Text = "F-App" },
-        new FluentCustomAppBarItem { Order = 9, IconRest = StructuredLogsIcon(), IconActive = StructuredLogsIcon(active: true), Text = "G-App", Count = 4 },
-        new FluentCustomAppBarItem { Order = 8, IconRest = StructuredLogsIcon(), IconActive = StructuredLogsIcon(active: true), Text = "H-APp" },
-        new FluentCustomAppBarItem { Order = 7, IconRest = StructuredLogsIcon(), IconActive = StructuredLogsIcon(active: true), Text = "I-APp" },
-        new FluentCustomAppBarItem { Order = 6, IconRest = TracesIcon(), IconActive = TracesIcon(active: true), Text = "J-App" },
-        new FluentCustomAppBarItem { Order = 5, IconRest = TracesIcon(), IconActive = TracesIcon(active: true), Text = "K-App" },
-        new FluentCustomAppBarItem { Order = 4, IconRest = TracesIcon(), IconActive = TracesIcon(active: true), Text = "L-App" }
-    };
-
-    private static Icon ResourcesIcon(bool active = false) =>
-        active ? new Icons.Filled.Size24.AppFolder() : new Icons.Regular.Size24.AppFolder();
-
-    private static Icon ConsoleLogsIcon(bool active = false) =>
-        active ? new Icons.Filled.Size24.SlideText() : new Icons.Regular.Size24.SlideText();
-
-    private static Icon StructuredLogsIcon(bool active = false) =>
-        active ? new Icons.Filled.Size24.SlideTextSparkle() : new Icons.Regular.Size24.SlideTextSparkle();
-
-    private static Icon TracesIcon(bool active = false) =>
-        active ? new Icons.Filled.Size24.GanttChart() : new Icons.Regular.Size24.GanttChart();
-
-    private static Icon MetricsIcon(bool active = false) => active ? new Icons.Filled.Size24.ChartMultiple()
-         : new Icons.Regular.Size24.ChartMultiple();
 
 }

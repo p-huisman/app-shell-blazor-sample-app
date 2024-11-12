@@ -5,7 +5,7 @@
 
 @inject RobotCatalog RobotCatalog
 @inject NavigationManager Navigation
-
+@inject IToastService ToastService
 
 <img src="@_robot.ImageUrl" />
 
@@ -28,10 +28,16 @@
     </FluentStack>
 </FluentStack>
 <p>
-    <FluentButton @onclick="() => Back()">
+    <FluentButton @onclick="() => ShowToastMessage()" Appearance="Appearance.Accent">
+        Add
+    </FluentButton>
+</p>
+<p>
+    <FluentButton @onclick="() => NavigateBack()">
         Back to catalog
     </FluentButton>
 </p>
+<FluentToastProvider MaxToastCount="10" />
 
 @code {
     [Parameter]
@@ -44,9 +50,15 @@
         _robot = RobotCatalog.Get(RobotName);
     }
 
-    public void Back()
+    public void NavigateBack()
     {
         Navigation.NavigateTo($"{Navigation.BaseUri}catalog");
     }
 
+    public void ShowToastMessage()
+    {
+        ToastService.ShowToast(ToastIntent.Success, "Hello from the robot page! " + "This is a toast message from the robot page.");
+    }   
+
+    
 }
