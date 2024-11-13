@@ -1,6 +1,0 @@
-{
-    "globalHeaders": {
-        "Access-Control-Allow-Origin": "https://p-huisman.github.io",
-        "Access-Control-Allow-Credentials": "true"
-    }
-}
