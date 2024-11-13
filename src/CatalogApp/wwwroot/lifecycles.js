@@ -6,7 +6,7 @@ const iLastSlash = import.meta.url.lastIndexOf('/');
 const assetBaseUrl = import.meta.url.substring(0, iLastSlash + 1);
 
 export const { bootstrap, mount, unmount } = singleSpaBlazor({
-  appTagName: 'my-app',
+  appTagName: 'catalog-app',
   stylePaths: ['CatalogApp.styles.css'],
   assetBaseUrl,
 });
